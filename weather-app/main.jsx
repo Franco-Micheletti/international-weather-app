@@ -1,7 +1,13 @@
-import {createRoot} from 'react-dom/client'
-
-const root = createRoot(document.getElementById("app"))
+import { createRoot } from 'react-dom/client'
+import '../weather-app/index.css'
+// import { Search } from './src/components/search'
+import { Home } from './src/components/home'
+const root = createRoot(document.getElementById('app'))
 
 root.render(
-  <div>Weather App</div>
+  <div>
+    <div>
+      <Home />
+    </div>
+  </div>
 )

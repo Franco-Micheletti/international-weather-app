@@ -1,0 +1,22 @@
+
+.globe-image{
+    width: 92px;
+    height: 92px;
+    margin-top: -50px;
+    border-radius: 50%;
+    background: url('/images/earthGlobe.webp');
+    animation: rotate 20s infinite linear;
+    box-shadow: 0px 0px 40px -2px rgb(84, 143, 140);
+}
+
+@keyframes rotate {
+
+    0%{
+        background-position: 0px 0px;
+    }
+
+    100%{
+        background-position: -160px 0px;
+    }
+    
+}
