@@ -1,9 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import '../css/earthGlobeAnimation.css'
+import { useNavigate, createSearchParams } from 'react-router-dom'
 
 export const Home = () => {
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
+  const navigate = useNavigate()
+
+  const handleSearch = (country, city) => {
+    const params = { country, city }
+    navigate({
+      pathname: '/search/',
+      search: `?${createSearchParams(params)}`
+    })
+  }
 
   return (
     <section className='pd-5 flex flex-col justify-center items-center'>
@@ -14,12 +24,12 @@ export const Home = () => {
         <div className='globe-image z-10 mb-12' />
         <div className='flex flex-col gap-5 -mt-12'>
           <label className='text-lg font-medium'>Country</label>
-          <input onChange={(e) => { setCountry(e.target.value) }} value={country} type='text' placeholder='Country' className='p-5 w-4/4 h-5 bg-slate-100 rounded-lg' />
+          <input onChange={(e) => { setCountry(e.target.value) }} value={country} type='text' placeholder='Country' className='p-5 w-4/4 h-5 bg-slate-100 rounded-lg outline-0' />
           <label className='text-lg font-medium'>City</label>
-          <input onChange={(e) => { setCity(e.target.value) }} value={city} type='text' placeholder='City' className='p-5 w-4/4 h-5 bg-slate-100 rounded-lg' />
+          <input onChange={(e) => { setCity(e.target.value) }} value={city} type='text' placeholder='City' className='p-5 w-4/4 h-5 bg-slate-100 rounded-lg outline-0' />
         </div>
         <div>
-          <button className='hover:bg-slate-400 hover:text-white cursor-pointer rounded-lg font-bold h-12 w-32 bg-gray-100 text-lg shadow-sm'>Search</button>
+          <button onClick={() => handleSearch(country, city)} className='hover:bg-slate-400 hover:text-white cursor-pointer rounded-lg font-bold h-12 w-32 bg-gray-100 text-lg shadow-sm'>Search</button>
         </div>
       </div>
       <div className='w-screen h-96 bg-gray-300' />
